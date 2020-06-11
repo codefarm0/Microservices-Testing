@@ -43,4 +43,11 @@ public class Calculator {
         }
         return n1/n2;
     }
+
+    public boolean isSumAllowed(int num){
+        if(num>100_000){
+            return false;
+        }
+        return true;
+    }
 }

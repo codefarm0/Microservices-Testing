@@ -1,15 +1,26 @@
 package com.greenlearner.demo;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author - GreenLearner(https://www.youtube.com/c/greenlearner)
  */
-class DemoTest {
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class DemoTest {
+    public DemoTest() {
+        System.out.println("test instance");
+    }
+
+    @BeforeEach
+    void setup(){
+        System.out.println("before each");
+    }
     @Test
+    @Order(10)
     void howToProtectFromCorona() {
         String expected = "stay home !! stay safe !!";
         Demo demo = new Demo();
@@ -19,6 +30,7 @@ class DemoTest {
     }
 
     @Test
+    @Order(2)
     void currentlyInfectedPeoples() {
 
         Demo demo = new Demo();
@@ -28,5 +40,10 @@ class DemoTest {
         int expected = 13100;
 
         assertEquals(expected, actual);
+    }
+
+    @AfterEach
+    void teardown(){
+        System.out.println("after each");
     }
 }

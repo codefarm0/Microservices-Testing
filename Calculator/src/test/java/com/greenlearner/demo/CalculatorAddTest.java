@@ -4,7 +4,6 @@ import com.greenlearner.maths.Calculator;
 import com.greenlearner.maths.TooLargeNumbers;
 import org.junit.jupiter.api.*;
 
-import java.net.CacheRequest;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -15,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 @DisplayName("Calculator Add test cases")
+@Tag("calcAdd")
 public class CalculatorAddTest {
 
     private Calculator calculator = new Calculator();
@@ -126,7 +126,7 @@ public class CalculatorAddTest {
 
     @Nested
     @DisplayName("Repeate tests demo")
-    class RepeatTestCases{
+    class RepeatTestCases {
 
         @RepeatedTest(10)
         @DisplayName("Repeat test for timing info")

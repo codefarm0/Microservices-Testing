@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 /**
  * @author - GreenLearner(https://www.youtube.com/c/greenlearner)
  */
+
+@Tag("standard")
 public class StandardTests {
 
 
