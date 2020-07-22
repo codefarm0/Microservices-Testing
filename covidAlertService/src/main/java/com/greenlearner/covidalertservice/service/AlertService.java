@@ -28,7 +28,7 @@ public class AlertService {
         alertStatus.setSummaryData(stateData);
         if (stateData.getTotalConfirmed() < 1000) {
             alertStatus.setAlertLevel("GREEN");
-            alertStatus.setMeasuresToBeTaken(Arrays.asList("Every is Normal !!"));
+            alertStatus.setMeasuresToBeTaken(Arrays.asList("Everything is Normal !!"));
         } else if (stateData.getTotalConfirmed() > 1000 && stateData.getTotalConfirmed() < 10000) {
             alertStatus.setAlertLevel("ORANGE");
             alertStatus.setMeasuresToBeTaken(Arrays.asList("Only Essential services are allowed", "List of services that come under essential service"));

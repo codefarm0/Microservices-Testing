@@ -21,7 +21,7 @@ public class Covid19DataProvider {
     @Autowired
     RestTemplate restTemplate;
 
-    StateData getStateData(String state) {
+    public StateData getStateData(String state) {
 
         CovidApiData covidApiData = restTemplate.getForObject(url, CovidApiData.class);
 
