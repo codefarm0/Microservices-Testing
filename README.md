@@ -34,7 +34,7 @@ Below topics are covered
 
 ## Sonarqube
 
-👉 [Sonarqube - static-code/code-coverage analyser]
+👉 [Sonarqube - static-code/code-coverage analyser](https://youtu.be/2EBRr0wGSwo)
 
 ## Integration Test 
 
