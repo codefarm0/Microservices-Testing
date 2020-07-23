@@ -6,8 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class CovidAlertServiceApplicationTests {
 
-	@Test
-	void contextLoads() {
+	@Test //SONAR
+	void contextLoads() {//SONAR
+		//SONAR
 	}
 
 }
