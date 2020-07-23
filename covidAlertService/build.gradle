@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 	id 'jacoco'
+	id "org.sonarqube" version "3.0"
 }
 
 group = 'com.greenlearner'
@@ -26,14 +27,24 @@ test {
 
 jacoco{
 	toolVersion = "0.8.5"
-	reportsDir = file("$buildDir/customJacocoReportDir")
+//	reportsDir = file("$buildDir/customJacocoReportDir")
 }
 
 jacocoTestReport {
 	dependsOn test // tests are required to run before generating the report
 	reports {
-		xml.enabled false
+		xml.enabled true
 		csv.enabled false
-		html.destination file("${buildDir}/jacocoHtml")
+//		html.destination file("${buildDir}/jacocoHtml")
 	}
+}
+
+sonarqube{
+	properties{
+		property "sonar.projectName", "Covid Alert Service"
+//		property "sonar.branch.name", "test branch"
+		property "sonar.host.url", "http://localhost:9000"
+//		property "sonar.login", "493c84f9bf51f58c9d620d292c4335d1897ed300"
+	}
+
 }

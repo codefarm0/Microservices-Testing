@@ -21,13 +21,13 @@ public class AlertController {
     private AlertService alertService;
 
     @GetMapping("/{state}")
-    AlertStatus getAlertAboutState(@PathVariable String state){
+    public AlertStatus getAlertAboutState(@PathVariable String state){
 
         return alertService.getAlertAboutState(state);
     }
 
     @GetMapping("/summary")
-    SummaryData getOverAllSummary(){
+    public SummaryData getOverAllSummary(){
 
         return alertService.getOverAllSummary();
     }

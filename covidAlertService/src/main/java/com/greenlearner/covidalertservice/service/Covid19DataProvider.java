@@ -16,14 +16,14 @@ import java.util.Arrays;
 @Service
 public class Covid19DataProvider {
 
-    final String url = "https://api.rootnet.in/covid19-in/stats/latest";
+    static final String URL = "https://api.rootnet.in/covid19-in/stats/latest";
 
     @Autowired
     RestTemplate restTemplate;
 
     public StateData getStateData(String state) {
 
-        CovidApiData covidApiData = restTemplate.getForObject(url, CovidApiData.class);
+        CovidApiData covidApiData = restTemplate.getForObject(URL, CovidApiData.class);
 
         return Arrays.stream(covidApiData.getData().getRegional())
                 .filter(e -> e.getLoc().equalsIgnoreCase(state))
@@ -33,7 +33,7 @@ public class Covid19DataProvider {
     }
 
     public SummaryData getSummaryData() {
-        CovidApiData covidApiData = restTemplate.getForObject(url, CovidApiData.class);
+        CovidApiData covidApiData = restTemplate.getForObject(URL, CovidApiData.class);
 
         SummaryData summaryData = covidApiData.getData().getSummary();
 

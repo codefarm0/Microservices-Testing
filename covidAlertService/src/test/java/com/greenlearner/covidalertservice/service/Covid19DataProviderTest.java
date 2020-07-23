@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 /**
  * @author - GreenLearner(https://www.youtube.com/c/greenlearner)
  */
-public class Covid19DataProviderTest {
+ class Covid19DataProviderTest {
 
     @Mock
     private RestTemplate restTemplate;

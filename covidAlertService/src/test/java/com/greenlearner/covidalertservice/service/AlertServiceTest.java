@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 /**
  * @author - GreenLearner(https://www.youtube.com/c/greenlearner)
  */
-public class AlertServiceTest {
+class AlertServiceTest {
 
     @InjectMocks
     private AlertService alertService;
