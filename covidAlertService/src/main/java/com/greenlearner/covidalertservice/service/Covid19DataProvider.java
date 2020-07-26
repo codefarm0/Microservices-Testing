@@ -25,6 +25,9 @@ public class Covid19DataProvider {
 
         CovidApiData covidApiData = restTemplate.getForObject(URL, CovidApiData.class);
 
+        /*if(!covidApiData.isSuccess()){
+            throw new RuntimeException("Issue in fetching data");
+        }*/
         return Arrays.stream(covidApiData.getData().getRegional())
                 .filter(e -> e.getLoc().equalsIgnoreCase(state))
                 .findAny()

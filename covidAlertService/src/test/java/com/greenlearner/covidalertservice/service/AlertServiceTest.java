@@ -35,7 +35,7 @@ class AlertServiceTest {
     @DisplayName("When the total number of confirmed cases are less that 100")
     void getAlertAboutStateTestGreen(){
         StateData stateData = new StateData();
-        stateData.setTotalConfirmed(100);
+        stateData.setTotalConfirmed(999);
 
         when(covid19DataProvider.getStateData(ArgumentMatchers.anyString())).thenReturn(stateData);
 
@@ -52,7 +52,7 @@ class AlertServiceTest {
     @DisplayName("When the total number of confirmed cases are less that 1005")
     void getAlertAboutStateTestOrange(){
         StateData stateData = new StateData();
-        stateData.setTotalConfirmed(1005);
+        stateData.setTotalConfirmed(9999);
 
         when(covid19DataProvider.getStateData(ArgumentMatchers.anyString())).thenReturn(stateData);
 
@@ -65,6 +65,22 @@ class AlertServiceTest {
         verify(covid19DataProvider).getStateData("uttar pradesh");
     }
 
+    @Test
+    @DisplayName("Boundry conditions")
+    void getAlertAboutStateTestOrange2(){
+        StateData stateData = new StateData();
+        stateData.setTotalConfirmed(1001);
+
+        when(covid19DataProvider.getStateData(ArgumentMatchers.anyString())).thenReturn(stateData);
+
+        AlertStatus status = alertService.getAlertAboutState("uttar pradesh");
+
+        assertEquals("ORANGE", status.getAlertLevel());
+        assertEquals(Arrays.asList("Only Essential services are allowed", "List of services that come under essential service"), status.getMeasuresToBeTaken());
+        assertEquals(stateData, status.getSummaryData());
+
+        verify(covid19DataProvider).getStateData("uttar pradesh");
+    }
     @Test
     @DisplayName("When the total number of confirmed cases are 10005")
     void getAlertAboutStateTestRed(){

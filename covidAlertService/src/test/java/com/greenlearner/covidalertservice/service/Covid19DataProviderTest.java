@@ -14,8 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -79,12 +78,13 @@ import static org.mockito.Mockito.when;
         SummaryData data = covid19DataProvider.getSummaryData();
 
         assertAll(
-                () -> assertEquals(0, data.getConfirmedButLocationUnidentified()),
+                () -> assertEquals(5, data.getConfirmedButLocationUnidentified()),
                 () -> assertEquals(100, data.getTotal()),
                 () -> assertEquals(2, data.getDeaths()),
                 () -> assertEquals(1, data.getDischarged()),
                 () -> assertEquals(10, data.getConfirmedCasesForeign()),
-                () -> assertEquals(90, data.getConfirmedCasesIndian())
+                () -> assertEquals(90, data.getConfirmedCasesIndian()),
+                () -> assertNotNull(data.getUpdateTime())
         );
     }
 
@@ -99,11 +99,12 @@ import static org.mockito.Mockito.when;
         summaryData.setConfirmedCasesIndian(90);
         summaryData.setConfirmedCasesForeign(10);
         summaryData.setUpdateTime(ZonedDateTime.now());
+        summaryData.setConfirmedButLocationUnidentified(5);
 
         countryData.setSummary(summaryData);
 
         covidApiData.setData(countryData);
-        covidApiData.setSuccess(true);
+//        covidApiData.setSuccess(true);
         covidApiData.setLastRefreshed(ZonedDateTime.now());
 
         return covidApiData;

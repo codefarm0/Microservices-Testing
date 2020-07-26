@@ -4,6 +4,7 @@ plugins {
 	id 'java'
 	id 'jacoco'
 	id "org.sonarqube" version "3.0"
+	id 'info.solidsoft.pitest' version '1.5.1'
 }
 
 group = 'com.greenlearner'
@@ -39,12 +40,16 @@ jacocoTestReport {
 	}
 }
 
-sonarqube{
-	properties{
+sonarqube {
+	properties {
 		property "sonar.projectName", "Covid Alert Service"
 //		property "sonar.branch.name", "test branch"
 		property "sonar.host.url", "http://localhost:9000"
 //		property "sonar.login", "493c84f9bf51f58c9d620d292c4335d1897ed300"
 	}
-
+}
+pitest {
+	junit5PluginVersion = '0.12'
+	timestampedReports = false
+	outputFormats = ['XML', 'HTML']
 }
